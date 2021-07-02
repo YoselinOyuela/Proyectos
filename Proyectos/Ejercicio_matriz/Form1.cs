@@ -16,5 +16,51 @@ namespace Ejercicio_matriz
         {
             InitializeComponent();
         }
+
+        private void Resultadobutton_Click(object sender, EventArgs e)
+        {
+            int fila = Convert.ToInt32(FilatextBox.Text);
+            int columna = Convert.ToInt32(ColumntextBox.Text);
+            int[,] Matriz = new int[fila, columna];
+
+            Random numeros = new Random();
+
+            for (int i = 0; i < fila; i++)
+            {
+                for (int j = 0; j < columna; j++)
+                {
+                    Matriz[i, j] = numeros.Next(1, 100);
+
+                }
+
+                dataGridView1.ColumnCount = columna;
+                dataGridView1.RowCount = fila;
+
+
+            }
+            for (int i = 0; i < fila; i++)
+            {
+                for (int j = 0; j < columna; j++)
+                {
+                    dataGridView1.Rows[i].Cells[j].Value = Matriz[i, j].ToString();
+                }
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FilatextBox.Clear();
+            ColumntextBox.Clear();
+           
+        }
+
+        private void Salirbutton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
+
+
 }
+
